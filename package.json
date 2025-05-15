@@ -1,0 +1,26 @@
+{
+  "name": "api-design-overview",
+  "version": "1.0.0",
+  "main": "src/index.ts",
+  "scripts": {
+    "start": "ts-node src/index.ts",
+    "dev": "nodemon src/index.ts",
+    "express": "ts-node src/clients/express.ts",
+    "graphql": "ts-node src/clients/graphql.ts",
+    "trpc": "ts-node src/clients/trpc.ts"
+  },
+  "dependencies": {
+    "@apollo/server": "^4.12.1",
+    "@trpc/client": "^10.37.0",
+    "@trpc/server": "^10.37.0",
+    "express": "^4.21.2",
+    "graphql": "^16.11.0",
+    "zod": "^3.22.2"
+  },
+  "devDependencies": {
+    "@types/node-fetch": "^2.6.12",
+    "nodemon": "^3.0.1",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.3.0"
+  }
+}
