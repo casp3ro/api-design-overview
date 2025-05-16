@@ -5,13 +5,13 @@ import { z } from "zod";
 
 const t = initTRPC.create();
 
-// Mock data
+// Mock user data
 let users = [
   { id: 1, name: "John Doe" },
   { id: 2, name: "Jane Smith" },
 ];
 
-// tRPC Router
+// Define the tRPC router
 const appRouter = t.router({
   // Query to fetch all users
   getUsers: t.procedure.query(() => {
@@ -51,11 +51,13 @@ const appRouter = t.router({
     }),
 });
 
+// Export the router type for client usage
 export type AppRouter = typeof appRouter;
 
 const app = express();
 const PORT = 3003;
 
+// Attach the tRPC middleware to the Express app
 app.use(
   "/trpc",
   trpcExpress.createExpressMiddleware({
@@ -63,6 +65,7 @@ app.use(
   })
 );
 
+// Start the tRPC server
 export const startTRPCServer = () => {
   app.listen(PORT, () => {
     console.log(`tRPC API running at http://localhost:${PORT}/trpc`);

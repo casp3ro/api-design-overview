@@ -12,11 +12,7 @@ const fetchUsers = async () => {
     const data = await response.json();
     console.log("All Users:", data);
   } catch (error) {
-    if (error instanceof Error) {
-      console.error("Error:", error.message);
-    } else {
-      console.error("Unexpected error:", error);
-    }
+    console.error("Error:", error instanceof Error ? error.message : error);
   }
 };
 
@@ -32,11 +28,7 @@ const fetchUserById = async (id: number) => {
     const data = await response.json();
     console.log(`User with ID ${id}:`, data);
   } catch (error) {
-    if (error instanceof Error) {
-      console.error("Error:", error.message);
-    } else {
-      console.error("Unexpected error:", error);
-    }
+    console.error("Error:", error instanceof Error ? error.message : error);
   }
 };
 
@@ -54,11 +46,7 @@ const addUser = async (name: string) => {
     const data = await response.json();
     console.log("New User Added:", data);
   } catch (error) {
-    if (error instanceof Error) {
-      console.error("Error:", error.message);
-    } else {
-      console.error("Unexpected error:", error);
-    }
+    console.error("Error:", error instanceof Error ? error.message : error);
   }
 };
 

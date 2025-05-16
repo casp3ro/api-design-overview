@@ -6,13 +6,13 @@ import bodyParser from "body-parser";
 const app = express();
 const PORT = 3002;
 
-// Mock data
+// Mock user data
 let users = [
   { id: 1, name: "John Doe" },
   { id: 2, name: "Jane Smith" },
 ];
 
-// GraphQL schema
+// GraphQL schema definition
 const typeDefs = `#graphql
   type User {
     id: ID!
@@ -20,20 +20,20 @@ const typeDefs = `#graphql
   }
 
   type Query {
-    getUsers: [User!]!
-    getUserById(id: ID!): User
+    getUsers: [User!]!          # Fetch all users
+    getUserById(id: ID!): User  # Fetch a user by ID
   }
 
   type Mutation {
-    addUser(name: String!): User!
-    deleteUser(id: ID!): User
+    addUser(name: String!): User!  # Add a new user
+    deleteUser(id: ID!): User      # Delete a user by ID
   }
 `;
 
-// Resolvers
+// Resolver functions for handling GraphQL operations
 const resolvers = {
   Query: {
-    getUsers: () => users,
+    getUsers: () => users, // Return all users
     getUserById: (_: any, args: { id: number }) => {
       const user = users.find((u) => u.id == args.id);
       if (!user) {
@@ -62,16 +62,19 @@ const resolvers = {
   },
 };
 
+// Initialize Apollo Server with schema and resolvers
 const server = new ApolloServer({
   typeDefs,
   resolvers,
 });
 
+// Start the Apollo Server and attach it to the Express app
 const startApolloServer = async () => {
   await server.start();
   app.use("/graphql", bodyParser.json(), expressMiddleware(server));
 };
 
+// Start the Express server for GraphQL API
 export const startGraphQLServer = async () => {
   await startApolloServer();
   app.listen(PORT, () => {
