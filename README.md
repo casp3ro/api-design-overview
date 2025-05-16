@@ -7,7 +7,7 @@ This project demonstrates different API design approaches using **Express**, **G
 1. Clone the repository:
 
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/casp3ro/api-design-overview
    cd api-design-overview
    ```
 
@@ -34,7 +34,7 @@ This project demonstrates different API design approaches using **Express**, **G
 
   Starts the project with live reload using `nodemon`.
 
-- **Run Express Client**:
+- **Run Express(REST API) Client**:
 
   ```bash
   npm run express
