@@ -52,6 +52,6 @@ app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
 // Start the Express server
 export const startExpressServer = () => {
   app.listen(URL.REST.PORT, () => {
-    console.log(`REST API running at http://localhost:${URL.REST.PORT}/api/users`);
+    console.log(`REST API running at: http://localhost:${URL.REST.PORT}/api/users`);
   });
 };
