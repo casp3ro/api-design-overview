@@ -1,7 +1,7 @@
 import express, { Request, Response, NextFunction } from "express";
+import { URL } from "../url";
 
 const app = express();
-const PORT = 3001;
 
 // Middleware to parse JSON request bodies
 app.use(express.json());
@@ -51,7 +51,7 @@ app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
 
 // Start the Express server
 export const startExpressServer = () => {
-  app.listen(PORT, () => {
-    console.log(`REST API running at http://localhost:${PORT}/api/users`);
+  app.listen(URL.REST.PORT, () => {
+    console.log(`REST API running at http://localhost:${URL.REST.PORT}/api/users`);
   });
 };

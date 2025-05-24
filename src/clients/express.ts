@@ -1,11 +1,10 @@
 import fetch from "node-fetch";
-
-const BASE_URL = "http://localhost:3001/api/users";
+import { URL } from "../url";
 
 // Fetch all users
 const fetchUsers = async () => {
   try {
-    const response = await fetch(BASE_URL);
+    const response = await fetch(URL.REST.BASE);
     if (!response.ok) {
       throw new Error(`Error fetching users: ${response.statusText}`);
     }
@@ -19,7 +18,7 @@ const fetchUsers = async () => {
 // Fetch a user by ID
 const fetchUserById = async (id: number) => {
   try {
-    const response = await fetch(`${BASE_URL}/${id}`);
+    const response = await fetch(`${URL.REST.BASE}/${id}`);
     if (!response.ok) {
       throw new Error(
         `Error fetching user with ID ${id}: ${response.statusText}`
@@ -35,7 +34,7 @@ const fetchUserById = async (id: number) => {
 // Add a new user
 const addUser = async (name: string) => {
   try {
-    const response = await fetch(BASE_URL, {
+    const response = await fetch(URL.REST.BASE, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ name }),

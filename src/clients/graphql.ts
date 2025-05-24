@@ -1,11 +1,11 @@
 import fetch from "node-fetch";
+import { URL } from "../url";
 
-const BASE_URL = "http://localhost:3002/graphql";
 
 // Helper function to make GraphQL requests
 const makeGraphQLRequest = async (query: string, variables: any = {}) => {
   try {
-    const response = await fetch(BASE_URL, {
+    const response = await fetch(URL.GRAPH_QL.BASE, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ query, variables }),

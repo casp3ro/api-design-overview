@@ -2,6 +2,7 @@ import express from "express";
 import * as trpcExpress from "@trpc/server/adapters/express";
 import { initTRPC } from "@trpc/server";
 import { z } from "zod";
+import { URL } from "../url";
 
 const t = initTRPC.create();
 
@@ -67,7 +68,7 @@ app.use(
 
 // Start the tRPC server
 export const startTRPCServer = () => {
-  app.listen(PORT, () => {
-    console.log(`tRPC API running at http://localhost:${PORT}/trpc`);
+  app.listen(URL.TRPC.PORT, () => {
+    console.log(`tRPC API running at http://localhost:${URL.TRPC.PORT}/trpc`);
   });
 };

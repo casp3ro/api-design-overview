@@ -2,9 +2,9 @@ import { ApolloServer } from "@apollo/server";
 import { expressMiddleware } from "@apollo/server/express4";
 import express from "express";
 import bodyParser from "body-parser";
+import { URL } from "../url";
 
 const app = express();
-const PORT = 3002;
 
 // Mock user data
 let users = [
@@ -77,7 +77,7 @@ const startApolloServer = async () => {
 // Start the Express server for GraphQL API
 export const startGraphQLServer = async () => {
   await startApolloServer();
-  app.listen(PORT, () => {
-    console.log(`GraphQL API running at http://localhost:${PORT}/graphql`);
+  app.listen(URL.GRAPH_QL.PORT, () => {
+    console.log(`GraphQL API running at http://localhost:${URL.GRAPH_QL.PORT}/graphql`);
   });
 };
